@@ -1,0 +1,7 @@
+#venv
+venv/
+env/
+__pycache__/
+
+#환경변수
+.env
