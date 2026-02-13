@@ -12,6 +12,8 @@ class MorningBot:
     def __init__(self):
         self.client = WebClient(token=os.getenv("SLACK_BOT_TOKEN"))
         self.channel = os.getenv("SLACK_CHANNEL_ID")
+        self.token = os.getenv("SLACK_BOT_TOKEN")
+        self.channel = os.getenv("SLACK_CHANNEL_ID")
     
     def send_morning_alert(self):
         """아침 알림 전송"""
@@ -56,6 +58,7 @@ _자동 생성된 메시지입니다 | {datetime.now().strftime('%Y-%m-%d %H:%M'
             
         except SlackApiError as e:
             print(f"❌ 에러 발생: {e.response['error']}")
+            
     
     def test_message(self):
         """테스트 메시지 (바로 전송)"""
@@ -65,3 +68,5 @@ _자동 생성된 메시지입니다 | {datetime.now().strftime('%Y-%m-%d %H:%M'
 if __name__ == "__main__":
     bot = MorningBot()
     bot.test_message()  # 일단 테스트
+    bot.send_morning_alert()  # 한 번만 실행
+    print("알림 전송 완료!")
