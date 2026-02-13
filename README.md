@@ -2,7 +2,7 @@
 
 > 매일 아침 날씨, 뉴스, 할 일을 자동으로 알려주는 Slack 봇
 
-![Python](https://img.shields.io/badge/Python-3.11-blue)
+![Python](https://img.shields.io/badge/Python-3.12-blue)
 ![Slack](https://img.shields.io/badge/Slack-API-purple)
 ![GitHub Actions](https://img.shields.io/badge/GitHub-Actions-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
