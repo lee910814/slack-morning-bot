@@ -1,0 +1,32 @@
+name: Morning Alert Bot
+
+on:
+  schedule:
+    - cron: '30 7  * * *'  # 매일 오후 16시 30분 (KST)
+  workflow_dispatch:      # 수동 실행도 가능
+
+jobs:
+  send-alert:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+    
+    - name: Send morning alert
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+        OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+        GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+      run: |
+        python main.py
